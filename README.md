@@ -16,4 +16,4 @@ For truing examples use Docker:
 
 Tap from **main** folder
 
-```> docker run --rm -v $PWD:/work -w /work tag:v0 bash -c 'cd work/run && regrress.py test_list' ```
+```> docker run --rm -v $PWD:/work -w /work tag:v0 bash -c 'cd work/run && python3 regrress.py regress' ```
