@@ -1,0 +1,17 @@
+MAKEFLAGS = -s
+VERILATOR = verilator
+
+PROJ_PATH = ../..
+
+FILE_LIST = top.sv +incdir+$(PROJ_PATH)/src
+
+COMP_DIR = build_default
+
+BUILD_OPTS = --cc -sv -exe --x-assign 0 -Wall --assert --build -j -Mdir $(COMP_DIR)
+
+run:
+	mkdir -p $(COMP_DIR); \
+	$(VERILATOR) $(FILE_LIST) $(BUILD_OPTS)
+
+clear:
+	rm -rf $(COMP_DIR)
