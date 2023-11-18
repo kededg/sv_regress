@@ -7,22 +7,22 @@ module top ();
     int delay;
 
     initial begin
-        $timeformat(-9, 2, " ns");
+        $timeformat(-9, 2, " s");
         
-        $display("TEST START TIME: %0t", $realtime);
+        $display("TEST START TIME: %0g", $realtime);
 
         void'($value$plusargs("STATUS=%s", status));        
     
         case (status)
             "PASS": $display("Test: PASS");
-            "ERROR": $display("Test: ERROR");
+            "FAIL": $display("Test: FAIL");
             "FATAL": $display("Test: FATAL");
             default:  $display("Test: UNKNOWN");
         endcase
 
-        delay = $urandom_range(100000, 1000);
+        delay = $urandom_range(30, 10);
         
-        #(1ps*delay) $display("TEST FINISH TIME: %0t", $realtime);
+        #(1s*delay) $display("TEST FINISH TIME: %0g", $realtime);
     end
 
     
