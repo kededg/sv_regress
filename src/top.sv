@@ -7,9 +7,9 @@ module top ();
     int delay;
 
     initial begin
-        $timeformat(-9, 2, " s");
+        $timeformat(-9, 2, " ns");
         
-        $display("TEST START TIME: %0g", $realtime);
+        $display("TEST START TIME: %0t", $realtime);
 
         void'($value$plusargs("STATUS=%s", status));        
     
@@ -20,9 +20,9 @@ module top ();
             default:  $display("Test: UNKNOWN");
         endcase
 
-        delay = $urandom_range(30, 10);
+        delay = $urandom_range(100000, 1000);
         
-        #(1s*delay) $display("TEST FINISH TIME: %0g", $realtime);
+        #(1ps*delay) $display("TEST FINISH TIME: %0t", $realtime);
     end
 
     
